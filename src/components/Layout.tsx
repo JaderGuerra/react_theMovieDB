@@ -8,9 +8,9 @@ export const Layout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <div className="p-4 bg-cover bg-center h-screen bg-slate-700">
+      <main className="p-4 bg-cover bg-center h-screen bg-slate-700">
         {children}
-      </div>
+      </main>
     </>
   );
 };
