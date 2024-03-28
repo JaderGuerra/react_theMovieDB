@@ -12,7 +12,7 @@ export default function HomeScreen() {
     <div>
       {isloading && <Loading />}
       {!isloading && (
-        <div className="flex justify-center flex-wrap gap-3">
+        <div className="flex justify-center flex-wrap gap-3 max-w-screen-xl	mx-auto md:gap-9">
           {movies.map((movie) => (
             <Card key={movie.id} movies={movie} />
           ))}

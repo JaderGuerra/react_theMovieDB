@@ -1,19 +1,18 @@
 import { Movie } from "../interface/movie.interface";
-import emptyImg from "../assets/no-IMg.webp"
+import emptyImg from "../assets/no-IMg.webp";
 
 interface Props {
   movies: Movie;
 }
 export const Card = ({ movies }: Props) => {
-
   const URL_IMG = "https://image.tmdb.org/t/p/original/";
 
-  const existImg = (poster:string) => {
-    return poster ? `${URL_IMG}/${movies.poster_path}` : emptyImg
-  }
+  const existImg = (poster: string) => {
+    return poster ? `${URL_IMG}/${movies.poster_path}` : emptyImg;
+  };
 
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-sm w-96bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:w-64">
       <a href="#">
         <img
           className="rounded-t-lg aspect-square"
