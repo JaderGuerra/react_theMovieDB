@@ -1,27 +1,34 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Movie, MovieResponse } from "../interface/movie.interface";
 import { ApiMovie } from "../api/apiMovie";
 
 export const useGetMovies = () => {
-  const [isloading, setIsloading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState<Movie[]>([]);
 
-  const loadMovies = async () => {
+  const fetchData = useCallback(async (endpoint: string) => {
     try {
-      setIsloading(true);
-      const response = await ApiMovie.get<MovieResponse>("popular");
-      setIsloading(false);
+      setIsLoading(true);
+      const response = await ApiMovie.get<MovieResponse>(endpoint);
       setMovies(response.data.results);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
-      setIsloading(false);
+      setIsLoading(false);
     }
-  };
-
-  useEffect(() => {
-    loadMovies();
   }, []);
 
-  return { isloading, movies };
+  useEffect(() => {
+    const loadMovies = async () => {
+      await fetchData("movie/popular");
+    };
+
+    loadMovies();
+  }, [fetchData]);
+
+  const searchMovies = useCallback(async (movie: string) => {
+    await fetchData(`search/movie?&query=${movie}`);
+  }, [fetchData]);
+
+  return { isLoading, movies, searchMovies };
 };

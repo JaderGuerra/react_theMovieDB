@@ -1,4 +1,4 @@
-export const Soon = () => {
+export const SoonIcon = () => {
   return (
     <svg
       className="w-6 h-6 text-gray-800 dark:text-white"

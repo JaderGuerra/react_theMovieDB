@@ -1,4 +1,4 @@
-export const Moon = () => {
+export const MoonIcon = () => {
   return (
     <svg
       className="w-6 h-6 text-gray-800 dark:text-white"
