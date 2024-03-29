@@ -30,7 +30,7 @@ export const MovieDetails = () => {
 
   return (
     <div
-      className="p-4 max-w-[1920px] md:mx-auto h-screen bg-cover bg-center dark:bg-slate-700"
+      className="p-4 max-w-[2200px] md:mx-auto h-full min-h-screen bg-cover bg-center dark:bg-slate-700"
       style={{ backgroundImage: `url(${fullPath(movie.backdrop_path)})` }}
     >
       <div className="bg-white border border-gray-200 mx-auto rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:flex md:h-auto md:w-3/4">

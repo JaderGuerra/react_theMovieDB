@@ -43,6 +43,7 @@ export const BoxSearch = () => {
           </svg>
         </div>
         <input
+          autoComplete="off"
           type="search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
