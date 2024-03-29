@@ -10,6 +10,8 @@ export default function HomeScreen() {
     getPopularMovies,
     {
       refetchOnWindowFocus: false,
+      cacheTime: 1000 * 60 * 60,
+      staleTime: 1000 * 60 * 10, 
     }
   );
 
