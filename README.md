@@ -1,6 +1,6 @@
-# Nombre del Proyecto
+# React Movies
 
-Breve descripción del proyecto.
+Obtén información detallada sobre esta película, incluyendo el elenco, la trama y las críticas.
 
 ## Levantar el Proyecto
 
