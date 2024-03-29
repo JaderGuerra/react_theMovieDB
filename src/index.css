@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .active {
-  @apply text-slate-700 dark:text-white;
+  @apply underline underline-offset-1 text-xl text-slate-800 dark:text-white;
 }
