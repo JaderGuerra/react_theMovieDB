@@ -1,23 +1,17 @@
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useMovieStore } from "../store/movie.store";
-import { URL_IMG } from "../const/transfortPath";
-import emptyImg from "../assets/no-IMg.webp";
 import { StarIcon } from "../components/StarIcon";
+import { useQuery } from "react-query";
+import { ApiMovie } from "../api/apiMovie";
+import { fullPath } from "../helper/tranformPath";
 
 export const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { getMovieDetails } = useMovieStore();
-  const { movie } = useMovieStore();
-
-  useEffect(() => {
-    getMovieDetails(id!);
-  }, [id]);
-
-  const existImg = (poster: string) => {
-    return poster ? `${URL_IMG}/${movie?.poster_path}` : emptyImg;
-  };
+  const { data: movie } = useQuery(["movieDetail", id], async () => {
+    const response = await ApiMovie.get(`/movie/${id}`);
+    return response.data;
+  });
+  
   const handleGoBack = () => {
     history.back();
   };
@@ -29,12 +23,12 @@ export const MovieDetails = () => {
   return (
     <div
       className="p-4 max-w-[1920px] md:mx-auto h-screen bg-cover bg-center dark:bg-slate-700"
-      style={{ backgroundImage: `url(${existImg(movie.poster_path)})` }}
+      style={{ backgroundImage: `url(${fullPath(movie.backdrop_path)})` }}
     >
       <div className="bg-white border border-gray-200 mx-auto rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:flex md:h-auto md:w-3/4">
         <img
           className="rounded-t-lg aspect-square md:w-60"
-          src={existImg(movie?.poster_path)}
+          src={fullPath(movie?.poster_path)}
           alt={movie.title}
         />
 
@@ -58,7 +52,6 @@ export const MovieDetails = () => {
               <StarIcon />
               {movie.vote_average}
             </small>
-            <span>Favorite</span>
           </p>
           <div className="flex justify-end mt-2">
             <button

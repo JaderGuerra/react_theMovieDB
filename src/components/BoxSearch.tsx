@@ -1,9 +1,29 @@
-import { useGetMovies } from "../hooks/useGetMovies";
+import { FormEvent, useRef, useState } from "react";
+import { useMovieStore } from "../store/movie.store";
+import { searchMovies } from "../services/searchMovie.service";
+import { useQueryClient } from "react-query";
 
 export const BoxSearch = () => {
-  const { searchMovies } = useGetMovies();
+  const [searchQuery, setSearchQuery] = useState("");
+  const setMovies = useMovieStore((state) => state.setMovies);
+  const queryClient = useQueryClient();
+  const previousSearch = useRef(searchQuery);
+
+  const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (searchQuery === "") return null;
+    if (searchQuery === previousSearch.current) return;
+
+    previousSearch.current = searchQuery;
+
+    const movies = await searchMovies(searchQuery);
+    setMovies(movies);
+    queryClient.setQueryData("popularMovies", movies);
+  };
+
   return (
-    <form className="max-w-md mx-auto my-8">
+    <form className="max-w-md mx-auto my-8" onSubmit={handleSearch}>
       <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
         Search
       </label>
@@ -24,10 +44,11 @@ export const BoxSearch = () => {
         </div>
         <input
           type="search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           id="default-search"
           className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search Movies..."
-          onChange={(e) => searchMovies(e.target.value)}
         />
         <button
           type="submit"
