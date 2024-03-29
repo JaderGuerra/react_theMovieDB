@@ -1,5 +1,4 @@
 import { BoxSearch, Loading, Card } from "../components";
-import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Movie } from "../interface/movie.interface";
 import { getPopularMovies } from "../services/popularMovies.service";
@@ -23,9 +22,7 @@ export default function HomeScreen() {
           {movies.length <= 0 && <EmptyResult />}
           <div className="mt-5 flex justify-center flex-wrap gap-3 max-w-screen-xl mx-auto md:gap-9">
             {movies.map((movie: Movie) => (
-              <Link key={movie.id} to={`/movie/${movie.id}`}>
-                <Card movies={movie} />
-              </Link>
+              <Card key={movie.id} movies={movie} ShowButtons />
             ))}
           </div>
         </>
