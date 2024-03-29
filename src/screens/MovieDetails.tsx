@@ -3,14 +3,22 @@ import { StarIcon } from "../components/StarIcon";
 import { useQuery } from "react-query";
 import { ApiMovie } from "../api/apiMovie";
 import { fullPath } from "../helper/tranformPath";
+import { MovieGenre } from "../interface/movie.interface";
+import { ListGenre } from "../components/ListGenre";
 
 export const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { data: movie } = useQuery(["movieDetail", id], async () => {
-    const response = await ApiMovie.get(`/movie/${id}`);
-    return response.data;
-  });
+  const { data: movie } = useQuery(
+    ["movieDetail", id],
+    async () => {
+      const response = await ApiMovie.get(`/movie/${id}`);
+      return response.data;
+    },
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
 
   const handleGoBack = () => {
     history.back();
@@ -42,11 +50,17 @@ export const MovieDetails = () => {
           <time className="text-slate-800 dark:text-gray-400">
             Fecha {movie?.release_date}
           </time>
-          <p>
-            <small className="text-slate-800 dark:text-gray-400">
-              Cantidad de votos : {movie?.vote_count}
-            </small>
+          <p className="text-slate-800 dark:text-gray-400 mt-3">
+            Cantidad de votos : {movie?.vote_count}
           </p>
+
+          <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400 mt-3">
+            Géneros :
+            {movie.genres.map((genre: MovieGenre) => (
+              <ListGenre key={genre.id} genre={genre} />
+            ))}
+          </ul>
+
           <p className=" flex justify-between items-center my-5">
             <small className="text-slate-800 dark:text-gray-400 flex gap-3 items-center ">
               <StarIcon />
