@@ -1,30 +1,54 @@
-# React + TypeScript + Vite
+# Nombre del Proyecto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Breve descripción del proyecto.
 
-Currently, two official plugins are available:
+## Levantar el Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para levantar el proyecto localmente, sigue estos pasos:
 
-## Expanding the ESLint configuration
+1. Instala los módulos de Node con el siguiente comando en la terminal:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+    ```
+    npm i
+    ```
 
-- Configure the top-level `parserOptions` property like this:
+2. Luego, para iniciar el proyecto, ejecuta:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+    ```
+    npm run dev
+    ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Tecnologías Utilizadas
+
+Este proyecto fue desarrollado utilizando las siguientes tecnologías:
+
+- React
+- Tailwind
+- Flowbite
+- TypeScript
+- Zustand
+- React Query
+- Axios
+
+## Estructura de la Carpeta
+
+La estructura de carpetas del proyecto es la siguiente:
+
+- `Api`: Utilizada para crear la instancia de Axios.
+- `Assets`: Contiene imágenes utilizadas en el proyecto.
+- `Components`: Contiene los componentes utilizados en el proyecto.
+- `Helper`: Contiene funciones auxiliares que realizan tareas específicas utilizadas en varios componentes de la aplicación.
+- `Hooks`: Contiene hooks utilizados en el proyecto.
+- `Interface`: Almacena las interfaces que tipean las variables necesarias.
+- `Screens`: Contiene las pantallas o vistas del proyecto.
+- `Services`: Contiene servicios encargados de realizar peticiones a la API.
+- `Store`: Contiene los stores utilizados en el proyecto.
+
+## Enlace de la Aplicación en Netlify
+
+Puedes acceder a la aplicación desplegada en Netlify a través del siguiente enlace:
+
+[Nombre de la Aplicación](https://main--react-themovie.netlify.app/favorites)
+
+## Puntos a mejorar
+- Realizar testing con jest
