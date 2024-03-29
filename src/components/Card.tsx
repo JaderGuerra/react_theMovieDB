@@ -35,6 +35,7 @@ export const Card = ({ movies, ShowButtons }: Props) => {
         className="rounded-t-lg aspect-square"
         src={fullPath(movies?.poster_path)}
         alt="Poster Img"
+        loading="lazy"
       />
       <div className="p-5">
         <h5 className="mb-2 text-xl	md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

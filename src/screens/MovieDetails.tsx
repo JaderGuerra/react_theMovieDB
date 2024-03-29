@@ -11,7 +11,7 @@ export const MovieDetails = () => {
     const response = await ApiMovie.get(`/movie/${id}`);
     return response.data;
   });
-  
+
   const handleGoBack = () => {
     history.back();
   };
