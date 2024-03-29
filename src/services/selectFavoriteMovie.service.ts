@@ -7,7 +7,7 @@ export const selectFavoriteMovie = async (movieId: number) => {
       media_id: movieId,
       favorite: true,
     });
-    if (response.status === 200) {
+    if (response.status === 200 || response.status === 201) {
       console.log("La película se marcó como favorita correctamente.");
     } else {
       console.error("Error al marcar la película como favorita.");

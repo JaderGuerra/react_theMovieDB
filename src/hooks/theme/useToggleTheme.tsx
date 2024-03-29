@@ -5,7 +5,6 @@ export const useTheme = () => {
 
   const toggleTheme = () => {
     setIsDarkTheme((prevIsDarkTheme) => !prevIsDarkTheme);
-    console.log("aq");
   };
 
   useEffect(() => {

@@ -14,7 +14,7 @@ export default function HomeScreen() {
   );
 
   return (
-    <div className="p-4 bg-cover bg-center dark:bg-slate-700 h-full">
+    <div className="p-4 dark:bg-slate-700 h-full min-h-screen	">
       {isLoading && <Loading />}
       {!isLoading && (
         <>
