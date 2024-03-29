@@ -48,7 +48,7 @@ La estructura de carpetas del proyecto es la siguiente:
 
 Puedes acceder a la aplicación desplegada en Netlify a través del siguiente enlace:
 
-[Nombre de la Aplicación](https://main--react-themovie.netlify.app/favorites)
+[react-themovie](https://main--react-themovie.netlify.app/favorites)
 
 ## Puntos a mejorar
 - Realizar testing con jest
